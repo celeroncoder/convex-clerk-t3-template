@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ConvexClientProvider } from "@/providers/convex";
 
 export const metadata: Metadata = {
   title: "Clerk Convex T3 App",
@@ -24,7 +25,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${geist.variable}`}>
         <body>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+          <TRPCReactProvider>
+            <ConvexClientProvider>{children}</ConvexClientProvider>
+          </TRPCReactProvider>
         </body>
       </html>
     </ClerkProvider>
